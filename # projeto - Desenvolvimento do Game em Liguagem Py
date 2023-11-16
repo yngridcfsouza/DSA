@@ -1,0 +1,62 @@
+# projeto - Desenvolvimento do Game em Liguagem Python - Versão 1
+
+# Import
+import random
+from os import system, name
+
+# Função para limpar a tela a cada execução
+def limpa_tela():
+	# Windows
+	if name == "nt":
+		_= system('cls')
+	# MAC ou Linux
+	else: 
+		_= system('clear')
+
+# Função 
+def game():
+
+	limpa_tela()
+
+	print("\nBem-vindo(a) ao jogo da forca!")
+	print("Adivinhe a palavra a seguir:\n")
+
+	# Lista de palavras para o jogo
+	palavras_aleatorias = ["banana", "abacate", "laranja", "limao", "acerola"]
+	
+	# Escolhe aleatoriamente uma palavra para o jogo
+	palavra_escolhida = random.choice(palavras_aleatorias)
+	
+	# Inserção das linhas de letras a serem descobertas
+	letras_descobertas = ['_' for letra in palavra]
+
+	# Número de chances 
+	chances = len.palavra_escolhida()
+
+	# Lista das letras escolhidas erradas
+	letras_erradas = []
+
+	# Loop enquanto o número de chances for maior que zero
+	while chances > 0:
+
+		# Print
+		print(" ".join(letras_descobertas))
+		print("\nChances restantes: ", chances)
+		print("Letras erradas: ".join(letras_erradas))
+
+		# Tentativa
+		tentativa = input("\nDigite uma letra: ".lower())
+
+		# Condicional
+		if tentativa in palavra:
+			index = 0
+			
+			for letra in palavra:
+				if tentativa == letra: 
+					letras_descobertas[index] = letra
+				index += 1
+		else:
+			chances -= 1
+			letras_erradas.append(tentativa)
+
+
